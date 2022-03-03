@@ -25,6 +25,12 @@ public class InputManager : MonoBehaviour
             mapPainter.Paint(mousePosition);
         }
 
+        if (Input.GetMouseButton(1))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mapPainter.Erase(mousePosition);
+        }
+
         // Pause
         if (Input.GetKeyDown(KeyCode.Space))
         {

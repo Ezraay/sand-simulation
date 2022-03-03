@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e7a5b15961c1e6429b56db9f51fc8eb, type: 3}
-  m_Name: Sand
+  m_Name: Oxygen
   m_EditorClassIdentifier: 
-  name: Sand
+  name: Oxygen
   colour:
     serializedVersion: 2
-    rgba: 4278235903
+    rgba: 4294901748
   strength: 0
-  density: 2
-  liquidMovementType: 0
+  density: 1
+  liquidMovementType: 1

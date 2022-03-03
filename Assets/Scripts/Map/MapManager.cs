@@ -17,9 +17,9 @@ public class MapManager : MonoBehaviour
         map = generator.Generate();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (paused)
+        if (!paused)
         {
             map.Tick();
         }

@@ -20,7 +20,39 @@ public class Map
 
     public void Tick()
     {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Neighbours neighbours = new Neighbours
+                {
+                    bottom = GetCell(x, y - 1),
+                    top = GetCell(x, y + 1),
+                    left = GetCell(x - 1, y),
+                    right = GetCell(x + 1, y),
+                    bottomLeft = GetCell(x - 1, y - 1),
+                    bottomRight = GetCell(x + 1, y - 1),
+                    topLeft = GetCell(x - 1, y - 1),
+                    topRight = GetCell(x + 1, y + 1)
+                };
 
+                GetCell(x, y).Tick(neighbours, this);
+            }
+        }
+    }
+
+    public void SwapCells(Vector2Int first, Vector2Int second)
+    {
+        Cell firstCell = GetCell(first.x, first.y);
+        Cell secondCell = GetCell(second.x, second.y);
+
+        SetCell(first.x, first.y, secondCell);
+        SetCell(second.x, second.y, firstCell);
+    }
+
+    public void SwapCells(Cell first, Cell second)
+    {
+        SwapCells(first.position, second.position);
     }
 
     public Cell GetCell(int x, int y)
@@ -41,5 +73,13 @@ public class Map
         }
 
         cells[x, y] = cell;
+        cell.position = new Vector2Int(x, y);
+    }
+
+    public void SetElement(int x, int y, Element element)
+    {
+        Vector2Int position = new Vector2Int(x, y);
+        Cell cell = new Cell(element, position);
+        SetCell(x, y, cell);
     }
 }

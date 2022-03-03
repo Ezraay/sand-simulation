@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 160, y: 90}
+  mapFill: {fileID: 11400000, guid: 0d40428504621764d9e62b8d662b2b71, type: 2}
 --- !u!4 &21670492
 Transform:
   m_ObjectHideFlags: 0
@@ -213,6 +214,7 @@ MonoBehaviour:
   brushDiameter: 3
   mapManager: {fileID: 1944340686}
   element: {fileID: 11400000, guid: a282924e0f7ef6246b986e656106b809, type: 2}
+  eraseElement: {fileID: 11400000, guid: 0d40428504621764d9e62b8d662b2b71, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
