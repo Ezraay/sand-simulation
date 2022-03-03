@@ -9,6 +9,7 @@ public class Map
     public readonly int height;
 
     private readonly Cell[,] cells;
+    private List<CellMove> cellMoves = new List<CellMove>();
 
     public Map(int width, int height)
     {
@@ -20,6 +21,8 @@ public class Map
 
     public void Tick()
     {
+        cellMoves.Clear();
+
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
@@ -36,9 +39,35 @@ public class Map
                     topRight = GetCell(x + 1, y + 1)
                 };
 
-                GetCell(x, y).Tick(neighbours, this);
+                Cell cell = GetCell(x, y);
+                cell.hasMoved = false;
+                cell.Tick(neighbours, this);
             }
         }
+
+        while (cellMoves.Count > 0)
+        {
+            int index = Random.Range(0, cellMoves.Count - 1);
+            CellMove randomMove = cellMoves[index];
+            cellMoves.RemoveAt(index);
+            Cell otherCell = GetCell(randomMove.destination.x, randomMove.destination.y);
+
+            if (randomMove.cell.hasMoved) continue;
+            if (otherCell.hasMoved) continue;
+            if (!randomMove.cell.CanSwapWith(GetCell(randomMove.destination.x, randomMove.destination.y))) continue;
+
+            randomMove.cell.hasMoved = true;
+            SwapCells(randomMove.cell.position, randomMove.destination);
+        }
+    }
+
+    public void TryMove(Cell first, Vector2Int destination)
+    {
+        cellMoves.Add(new CellMove
+        {
+            cell = first,
+            destination = destination
+        });
     }
 
     public void SwapCells(Vector2Int first, Vector2Int second)
@@ -82,4 +111,10 @@ public class Map
         Cell cell = new Cell(element, position);
         SetCell(x, y, cell);
     }
+}
+
+public struct CellMove
+{
+    public Cell cell;
+    public Vector2Int destination;
 }

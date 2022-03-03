@@ -9,6 +9,10 @@ public class MapPainter : MonoBehaviour
     [SerializeField] private Element element;
     [SerializeField] private Element eraseElement;
 
+    public void SetElement(Element element) {
+        this.element = element;
+    }
+
     public void Paint(Vector3 point)
     {
         Fill(point, element);

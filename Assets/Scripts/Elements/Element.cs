@@ -12,7 +12,7 @@ public class Element : ScriptableObject {
     [SerializeField] private Color32 colour = Color.white;
 
     [SerializeField] private float strength = 0; // Determines how strong an element is at holding weight
-    [SerializeField] private float density = 1; // Determines whether an element sinks below another
+    [SerializeField] private float density = 1; // Determines whether an element sinks below another, kg/m3
     [SerializeField] private bool liquidMovementType; // If checked, will move side to side to fill a container
 }
 

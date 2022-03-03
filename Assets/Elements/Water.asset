@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e7a5b15961c1e6429b56db9f51fc8eb, type: 3}
-  m_Name: Oxygen
+  m_Name: Water
   m_EditorClassIdentifier: 
-  name: Oxygen
+  name: New element
   colour:
     serializedVersion: 2
-    rgba: 4294901748
+    rgba: 4294944561
   strength: 0
-  density: 1.43
+  density: 997
   liquidMovementType: 1

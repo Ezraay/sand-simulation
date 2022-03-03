@@ -17,5 +17,5 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4278235903
   strength: 0
-  density: 2
+  density: 1520
   liquidMovementType: 0

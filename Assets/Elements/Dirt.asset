@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e7a5b15961c1e6429b56db9f51fc8eb, type: 3}
-  m_Name: Oxygen
+  m_Name: Dirt
   m_EditorClassIdentifier: 
-  name: Oxygen
+  name: New element
   colour:
     serializedVersion: 2
-    rgba: 4294901748
-  strength: 0
-  density: 1.43
-  liquidMovementType: 1
+    rgba: 4282412468
+  strength: 10
+  density: 1220
+  liquidMovementType: 0
