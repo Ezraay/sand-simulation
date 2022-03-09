@@ -8,6 +8,7 @@ public class Map
     public readonly int width;
     public readonly int height;
 
+    public readonly List<Cell> solidCells = new List<Cell>();
     private readonly Cell[,] cells;
     private List<CellMove> cellMoves = new List<CellMove>();
 
@@ -22,6 +23,8 @@ public class Map
     public void Tick()
     {
         cellMoves.Clear();
+
+        StructuralIntegrity.Tick(this);
 
         for (int y = 0; y < height; y++)
         {
@@ -63,6 +66,8 @@ public class Map
 
     public void TryMove(Cell first, Vector2Int destination)
     {
+        // if (!GetCell(destination.x, destination.y).hasMoved)
+        // SwapCells(first.position, destination);
         cellMoves.Add(new CellMove
         {
             cell = first,
@@ -94,6 +99,10 @@ public class Map
         return cells[x, y];
     }
 
+    public Cell GetCellByIndex(int i) {
+        return GetCell(i % width, i / width);
+    }
+
     public void SetCell(int x, int y, Cell cell)
     {
         if (x < 0 || y < 0 || x >= width || y >= height)
@@ -101,8 +110,19 @@ public class Map
             return;
         }
 
+        Cell oldCell = GetCell(x, y);
+        if (oldCell != null && oldCell.Solid)
+        {
+            solidCells.Remove(oldCell);
+        }
+
         cells[x, y] = cell;
         cell.position = new Vector2Int(x, y);
+
+        if (cell.Solid)
+        {
+            solidCells.Add(cell);
+        }
     }
 
     public void SetElement(int x, int y, Element element)

@@ -16,6 +16,7 @@ MonoBehaviour:
   colour:
     serializedVersion: 2
     rgba: 4294901748
-  strength: 0
   density: 1.43
-  liquidMovementType: 1
+  solid: 0
+  strength: 0
+  weight: 0

@@ -15,6 +15,7 @@ public class MapManager : MonoBehaviour
     private void Start()
     {
         map = generator.Generate();
+        StructuralIntegrity.Setup(map);
     }
 
     private void FixedUpdate()
